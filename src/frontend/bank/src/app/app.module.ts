@@ -4,18 +4,22 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserListComponent } from './components/user-list/users-list.component';
+import { UserListComponent } from './components/users-list/users-list.component';
 import { UserService } from './services/user-service.service';
+import { SignUpComponent } from './components/sign-up/sign-up-form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserListComponent
+    UserListComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
