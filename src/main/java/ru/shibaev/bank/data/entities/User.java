@@ -23,7 +23,7 @@ public class User {
     private String password;
 
     @Getter
-    @Embedded
+    @OneToMany
     private UserAccount account;
 
     public User() {

@@ -1,5 +1,7 @@
 package ru.shibaev.bank.data;
 
+import java.math.BigDecimal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -21,8 +23,8 @@ public class DatabaseSeeder implements CommandLineRunner {
 
     private void seedDatabase() {
         if (usersRepository.count() == 0) {
-            User user1 = new User("user1", "mail1@mail.ru", "Password1", new UserAccount(100L));
-            User user2 = new User("user2", "mail2@mail.ru", "Password2", new UserAccount(200L));
+            User user1 = new User("user1", "mail1@mail.ru", "Password1", new UserAccount("RUB", new BigDecimal(100)));
+            User user2 = new User("user2", "mail2@mail.ru", "Password2", new UserAccount("RUB", new BigDecimal(200)));
             usersRepository.save(user1);
             usersRepository.save(user2);
             usersRepository.flush();
