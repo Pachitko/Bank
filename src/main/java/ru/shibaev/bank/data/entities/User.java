@@ -1,9 +1,13 @@
 package ru.shibaev.bank.data.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.*;
 import lombok.Getter;
+import ru.shibaev.bank.model.models.UserAccountOut;
+import ru.shibaev.bank.model.models.UserOut;
 
 @Entity
 @Table(name = "users")
@@ -11,10 +15,11 @@ public class User {
     @Id
     @Getter
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "user_id")
     private UUID id;
 
     @Getter
-    private String login;
+    private String username;
 
     @Getter
     private String email;
@@ -23,16 +28,26 @@ public class User {
     private String password;
 
     @Getter
-    @OneToMany
-    private UserAccount account;
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<UserAccount> accounts;
 
     public User() {
     }
 
-    public User(String login, String email, String password, UserAccount account) {
-        this.login = login;
+    public User(String username, String email, String password, List<UserAccount> accounts) {
+        this.username = username;
         this.email = email;
         this.password = password;
-        this.account = account;
+        this.accounts = accounts;
+    }
+
+    public UserOut toDto() {
+        var userAccounts = new ArrayList<UserAccountOut>();
+        for (UserAccount userAccount : accounts) {
+            userAccounts.add(userAccount.toDto());
+        }
+        var userDto = new UserOut(username, email, userAccounts);
+
+        return userDto;
     }
 }
