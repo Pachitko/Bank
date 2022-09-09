@@ -1,21 +1,22 @@
 package ru.shibaev.bank.model.models;
 
-import lombok.*;
+import java.util.Collections;
+
+import ru.shibaev.bank.data.entities.User;
 
 public class UserRegistrationDto {
 
-    @Getter
-    private String login;
+    public String username;
+    public String email;
+    public String password;
 
-    @Getter
-    private String email;
-
-    @Getter
-    private String password;
-
-    public UserRegistrationDto(String login, String email, String password) {
-        this.login = login;
+    public UserRegistrationDto(String username, String email, String password) {
+        this.username = username;
         this.email = email;
         this.password = password;
+    }
+
+    public User toUser() {
+        return new User(username, email, password, Collections.emptyList());
     }
 }
