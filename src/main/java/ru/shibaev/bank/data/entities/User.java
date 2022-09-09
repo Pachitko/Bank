@@ -28,7 +28,7 @@ public class User {
     private String password;
 
     @Getter
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private List<UserAccount> accounts;
 
     public User() {

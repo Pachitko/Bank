@@ -26,7 +26,7 @@ public class UserAccount {
 
     @Getter
     @Setter
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -40,5 +40,28 @@ public class UserAccount {
 
     public UserAccountOut toDto() {
         return new UserAccountOut(money, currency);
+    }
+
+    public void deductMoney(BigDecimal amount) {
+        if (amount.compareTo(BigDecimal.ZERO) <= 0)
+            throw new IllegalArgumentException(
+                    String.format("Amount of money to deduct cann't be less or equal than 0", amount));
+
+        if (this.money.compareTo(amount) < 0)
+            throw new IllegalArgumentException("Not enough money to transfer");
+
+        money = money.subtract(amount);
+    }
+
+    public void addMoney(String currency, BigDecimal amount) {
+        if (amount.compareTo(BigDecimal.ZERO) <= 0)
+            throw new IllegalArgumentException(
+                    String.format("Amount of money to add cann't be less or equal than 0", amount));
+
+        if (!this.currency.equalsIgnoreCase(currency))
+            throw new IllegalArgumentException(
+                    String.format("Currencies \"%s\" and \"%s\" do not match", this.currency, currency));
+
+        money = money.add(amount);
     }
 }
