@@ -7,19 +7,23 @@ import { AppComponent } from './app.component';
 import { UserListComponent } from './components/users-list/users-list.component';
 import { UserService } from './services/user-service.service';
 import { SignUpComponent } from './components/sign-up/sign-up-form.component';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HeaderComponent } from './components/header/header.component';
+import { BodyComponent } from './components/body/body.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
-    SignUpComponent
+    SignUpComponent,
+    HeaderComponent,
+    BodyComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    ReactiveFormsModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

@@ -5,7 +5,7 @@ import { UserService } from '../../services/user-service.service'
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
-  styleUrls: ['./users-list.component.css']
+  styleUrls: ['./users-list.component.sass']
 })
 export class UserListComponent implements OnInit {
 
@@ -17,7 +17,10 @@ export class UserListComponent implements OnInit {
 
   ngOnInit() {
     this.userService.findAll().subscribe(data => {
-      this.users = data;
+      if (data.succeeded) {
+        this.users = data.value;
+        console.log(data);
+      }
     });
   }
 }

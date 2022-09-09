@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { User } from '../dtos/user';
 import { UserRegistration } from '../dtos/user-registration';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { UserResponse } from '../dtos/userResponse';
 
 @Injectable()
 export class UserService {
@@ -10,14 +12,14 @@ export class UserService {
   private usersUrl: string;
 
   constructor(private http: HttpClient) {
-    this.usersUrl = 'http://localhost:8080/users';
+    this.usersUrl = environment.usersEndpoint;
   }
 
-  public findAll(): Observable<User[]> {
-    return this.http.get<User[]>(this.usersUrl);
+  public findAll(): Observable<UserResponse<User[]>> {
+    return this.http.get<UserResponse<User[]>>(this.usersUrl);;
   }
 
-  public save(userRegistration: UserRegistration) {
+  public register(userRegistration: UserRegistration): Observable<UserRegistration> {
     return this.http.post<UserRegistration>(this.usersUrl, userRegistration);
   }
 }
