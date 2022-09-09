@@ -5,12 +5,22 @@
         <tr>
           <th scope="col">Username</th>
           <th scope="col">Email</th>
+          <th scope="col">Accounts</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let user of users">
           <td>{{ user.username }}</td>
           <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
+          <td>
+            <ul *ngFor="let account of user.accounts">
+              <li>
+                <span>
+                  {{account.currency}}: {{account.money}}
+                </span>
+              </li>
+            </ul>
+          </td>
         </tr>
       </tbody>
     </table>
