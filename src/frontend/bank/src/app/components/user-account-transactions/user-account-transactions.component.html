@@ -1,0 +1,35 @@
+<div class="card mb-3">
+  <div class="card-body">
+    <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
+      <div class="form-floating mb-3">
+        <input type="text" formControlName="fromUserAccountId" class="form-control" id="fromAccount"
+          placeholder="From account" required>
+        <label for="fromAccount">From (UUID)</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" formControlName="toUserAccountId" class="form-control" id="toAccount"
+          placeholder="To account" required>
+        <label for="toAccount">To (UUID)</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="number" formControlName="amount" class="form-control" id="amount" placeholder="Amount" required>
+        <label for="amount">Amount</label>
+      </div>
+      <div class="d-flex justify-content-center">
+        <button type="submit" [disabled]="!transactionForm.valid" class="btn btn-primary">Transfer</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <ul class="list-group text-center">
+      <li *ngFor="let t of transactions">
+        <span>{{t.fromUserAccountId?.substring(0, 6) }}</span> ->
+        <span>{{ t.amount }}</span> ->
+        <span>{{ t.toUserAccountId?.substring(0, 6) }}</span>
+      </li>
+    </ul>
+  </div>
+</div>

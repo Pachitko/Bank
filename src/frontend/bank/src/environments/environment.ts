@@ -5,7 +5,11 @@
 export const environment = {
   production: false,
   usersEndpoint: 'http://localhost:8080/api/users',
-  title: 'Bank'
+  transactionsEndpoint: 'http://localhost:8080/api/transactions',
+  title: 'Bank',
+  usersPage: "/users",
+  signUpPage: "/signup",
+  transactionsPage: "/transactions"
 };
 
 /*

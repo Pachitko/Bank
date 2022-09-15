@@ -10,6 +10,8 @@ import { SignUpComponent } from './components/sign-up/sign-up-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
 import { BodyComponent } from './components/body/body.component';
+import { UserTransactionsComponent } from './components/user-account-transactions/user-account-transactions.component';
+import { UserAccountTransactionService } from './services/user-account-transaction.service';
 
 @NgModule({
   declarations: [
@@ -17,15 +19,16 @@ import { BodyComponent } from './components/body/body.component';
     UserListComponent,
     SignUpComponent,
     HeaderComponent,
-    BodyComponent
+    BodyComponent,
+    UserTransactionsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [UserService],
-  bootstrap: [AppComponent]
+  providers: [UserService, UserAccountTransactionService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

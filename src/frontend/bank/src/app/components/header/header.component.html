@@ -1,17 +1,17 @@
-<header>
-    <div class="container">
-      <div class="title">
-        {{title}}
-      </div>
-      <nav class="nav">
-        <ul class="text-center list-inline py-3">
-          <li class="list-inline-item">
-            <a routerLink="/users" class="btn btn-info">List Users</a>
-          </li>
-          <li class="list-inline-item">
-            <a routerLink="/signup" class="btn btn-info">Add User</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-</header>
+<div class="container">
+  <header class="d-flex justify-content-center py-3">
+    <nav class="nav">
+      <ul class="nav nav-pills">
+        <li class="nav-item mx-3">
+          <a routerLink="/users" routerLinkActive="active" class="nav-link">Users list</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/signup" routerLinkActive="active" class="nav-link">Add User</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/transactions" routerLinkActive="active" class="nav-link">Transactions</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+</div>
