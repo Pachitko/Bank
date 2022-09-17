@@ -13,9 +13,9 @@ import { UserAccountTransactionIn } from 'src/app/dtos/user-account-transaction-
 })
 export class UserTransactionsComponent implements OnInit {
   transactionForm = this.formBuilder.group({
-    fromUserAccountId: ['', Validators.required],
-    toUserAccountId: ['', Validators.required],
-    amount: [0, Validators.required],
+    fromUserAccountId: ['', [Validators.required]],
+    toUserAccountId: ['', [Validators.required]],
+    amount: [0, [Validators.required, Validators.min(0)]],
   });
 
   transactions: UserAccountTransactionIn[];

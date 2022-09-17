@@ -1,17 +1,6 @@
-<div class="container">
-  <header class="d-flex justify-content-center py-3">
-    <nav class="nav">
-      <ul class="nav nav-pills">
-        <li class="nav-item mx-3">
-          <a routerLink="/users" routerLinkActive="active" class="nav-link">Users list</a>
-        </li>
-        <li class="nav-item">
-          <a routerLink="/signup" routerLinkActive="active" class="nav-link">Add User</a>
-        </li>
-        <li class="nav-item">
-          <a routerLink="/transactions" routerLinkActive="active" class="nav-link">Transactions</a>
-        </li>
-      </ul>
-    </nav>
-  </header>
-</div>
+<mat-toolbar>
+  <span class="space"></span>
+  <a mat-raised-button routerLink="/users" routerLinkActive="active" class="nav-btn">Users</a>
+  <a mat-raised-button routerLink="/signup" routerLinkActive="active" class="nav-btn">Sign up</a>
+  <a mat-raised-button routerLink="/transactions" routerLinkActive="active" class="nav-btn">Transactions</a>
+</mat-toolbar>
