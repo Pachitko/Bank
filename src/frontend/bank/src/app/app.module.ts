@@ -21,6 +21,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     MatToolbarModule,
     MatIconModule,
+    MatAutocompleteModule
   ],
   providers: [UserService, UserAccountTransactionService],
   bootstrap: [AppComponent],

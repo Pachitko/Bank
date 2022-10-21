@@ -19,9 +19,11 @@ public class User {
     private UUID id;
 
     @Getter
+    @Column(unique = true)
     private String username;
 
     @Getter
+    @Column(unique = true)
     private String email;
 
     @Getter
